@@ -11,8 +11,9 @@ Then, run:
 ```bash
 $ lein figwheel dev
 $ lein cljsbuild auto test
-$ lein cljsbuild auto release
+$ lein midje :autotest
 $ lein repl
+user=> (start)
 ```
 
 Then run in Vim `:Piggieback 9000` (make sure you have [vim-fireplace](https://github.com/tpope/vim-fireplace) installed), and open `htto://localhost:3449/index.html` in the browser. You are good to go!

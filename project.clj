@@ -4,15 +4,33 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 ;; backend
+                 [http-kit "2.1.16"]
+                 [metosin/compojure-api "0.15.1"]
+                 [metosin/ring-http-response "0.4.1"]
+                 [metosin/ring-swagger-ui "2.0.17"]
+
+                 ;; cljs
                  [org.clojure/clojurescript "0.0-2311"]
                  [figwheel "0.1.4-SNAPSHOT"]]
+
+  :source-paths ["src/clj"]
+  :test-paths ["test/clj"]
+
+  :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.5"]
+                                  [midje "1.6.3"]]
+                   :source-paths ["dev-src"]}}
+
+  :main perfection.server
+  :repl-options {:init-ns user}
 
   :jvm-opts ["-Xmx1G"]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-figwheel "0.1.4-SNAPSHOT"]
             [com.cemerick/austin "0.1.4"]
-            [com.cemerick/clojurescript.test "0.3.1"]]
+            [com.cemerick/clojurescript.test "0.3.1"]
+            [lein-midje "3.1.3"]]
 
   :figwheel {
     :http-server-root "public"
@@ -36,7 +54,7 @@
                 :pretty-print false
                 :source-map "resources/public/perfection_prod.js.map"}}
              {:id "test"
-              :source-paths ["src/perfection" "test"]
+              :source-paths ["src/perfection" "test/cljs"]
               :notify-command ["phantomjs" :cljs.test/runner "perfection_test.js"]
               :compiler {
                 :output-to "perfection_test.js"
