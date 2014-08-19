@@ -17,3 +17,7 @@ pom.xml.asc
 /target
 /*.js
 /*.js.map
+
+bower_components
+node_modules
+*.css

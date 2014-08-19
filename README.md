@@ -9,6 +9,7 @@ Fork it, and start building your own awesome ClojureScript projects, using live 
 Then, run:
 
 ```bash
+$ gulp
 $ lein figwheel dev
 $ lein cljsbuild auto test
 $ lein midje :autotest

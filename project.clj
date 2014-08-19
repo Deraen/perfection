@@ -39,14 +39,14 @@
 
   :cljsbuild {
     :builds [{:id "dev"
-              :source-paths ["src/perfection" "src/figwheel" "src/brepl"]
+              :source-paths ["src/cljs" "src/figwheel" "src/brepl"]
               :compiler {
                 :output-to "resources/public/perfection.js"
                 :output-dir "resources/public/out"
                 :optimizations :none
                 :source-map true}}
              {:id "release"
-              :source-paths ["src/perfection"]
+              :source-paths ["src/cljs"]
               :compiler {
                 :output-to "resources/public/perfection_prod.js"
                 :output-dir "resources/public/prod-out"
@@ -54,7 +54,7 @@
                 :pretty-print false
                 :source-map "resources/public/perfection_prod.js.map"}}
              {:id "test"
-              :source-paths ["src/perfection" "test/cljs"]
+              :source-paths ["src/cljs" "test/cljs"]
               :notify-command ["phantomjs" :cljs.test/runner "perfection_test.js"]
               :compiler {
                 :output-to "perfection_test.js"
