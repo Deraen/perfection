@@ -18,6 +18,6 @@ pom.xml.asc
 /*.js
 /*.js.map
 
-bower_components
+resources/public/components
 node_modules
 *.css

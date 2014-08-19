@@ -17,4 +17,8 @@ $ lein repl
 user=> (start)
 ```
 
+## Random links:
+
+- Testing: https://github.com/sgrove/omchaya/blob/master/test-cljs/omchaya/components/navbar.cljs
+
 Then run in Vim `:Piggieback 9000` (make sure you have [vim-fireplace](https://github.com/tpope/vim-fireplace) installed), and open `htto://localhost:3449/index.html` in the browser. You are good to go!

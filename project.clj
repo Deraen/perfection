@@ -12,6 +12,9 @@
 
                  ;; cljs
                  [org.clojure/clojurescript "0.0-2311"]
+                 [om "0.7.1"]
+                 [prismatic/om-tools "0.3.2"]
+                 [sablono "0.2.21"]
                  [figwheel "0.1.4-SNAPSHOT"]]
 
   :source-paths ["src/clj"]
@@ -52,10 +55,14 @@
                 :output-dir "resources/public/prod-out"
                 :optimizations :advanced
                 :pretty-print false
-                :source-map "resources/public/perfection_prod.js.map"}}
+                :source-map "resources/public/perfection_prod.js.map"
+                :preamble ["react/react.min.js"]
+                :externs ["react/externs/react.js"]}}
              {:id "test"
               :source-paths ["src/cljs" "test/cljs"]
               :notify-command ["phantomjs" :cljs.test/runner "perfection_test.js"]
               :compiler {
                 :output-to "perfection_test.js"
-                :optimizations :whitespace}}]})
+                :optimizations :whitespace
+                :preamble ["react/react.min.js"]
+                :externs ["react/externs/react.js"]}}]})
