@@ -3,14 +3,14 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2202"]
-                 [figwheel "0.1.3-SNAPSHOT"]]
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojurescript "0.0-2311"]
+                 [figwheel "0.1.4-SNAPSHOT"]]
 
   :jvm-opts ["-Xmx1G"]
 
   :plugins [[lein-cljsbuild "1.0.3"]
-            [lein-figwheel "0.1.3-SNAPSHOT"]
+            [lein-figwheel "0.1.4-SNAPSHOT"]
             [com.cemerick/austin "0.1.4"]
             [com.cemerick/clojurescript.test "0.3.1"]]
 
