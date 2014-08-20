@@ -1,7 +1,8 @@
 (ns perfection.core-test
-  (:require-macros [cemerick.cljs.test :refer (is deftest)])
-  (:require [cemerick.cljs.test :as test]
-            [perfection.core :as pn]))
+  (:require [purnam.test]
+            [perfection.core :as pn])
+  (:require-macros [purnam.test :refer [describe it is]]))
 
-(deftest ex1
-  (is (= (pn/add 1 2) 3)))
+(describe pn/add
+  (it ""
+    (is (pn/add 1 2) 3)))

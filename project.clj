@@ -9,11 +9,13 @@
                  [metosin/compojure-api "0.15.1"]
                  [metosin/ring-http-response "0.4.1"]
                  [metosin/ring-swagger-ui "2.0.17"]
+                 [metosin/clojure-bootcamp.dataset "0.1.0"]
 
                  ;; cljs
                  [org.clojure/clojurescript "0.0-2311"]
+                 [im.chit/purnam.test "0.4.3"]
                  [om "0.7.1"]
-                 [prismatic/om-tools "0.3.2"]
+                 [prismatic/om-tools "0.3.2" :exclusions [org.clojure/clojure]]
                  [sablono "0.2.21"]
                  [figwheel "0.1.4-SNAPSHOT"]]
 
@@ -32,7 +34,6 @@
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-figwheel "0.1.4-SNAPSHOT"]
             [com.cemerick/austin "0.1.4"]
-            [com.cemerick/clojurescript.test "0.3.1"]
             [lein-midje "3.1.3"]]
 
   :figwheel {
@@ -60,9 +61,8 @@
                 :externs ["react/externs/react.js"]}}
              {:id "test"
               :source-paths ["src/cljs" "test/cljs"]
-              :notify-command ["phantomjs" :cljs.test/runner "perfection_test.js"]
               :compiler {
-                :output-to "perfection_test.js"
+                :output-to "target/perfection_test.js"
                 :optimizations :whitespace
                 :preamble ["react/react.min.js"]
                 :externs ["react/externs/react.js"]}}]})
