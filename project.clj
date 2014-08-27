@@ -4,8 +4,10 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/core.async "0.1.338.0-5c5012-alpha"]
+
                  ;; backend
-                 [http-kit "2.1.16"]
+                 [http-kit "2.1.18"]
                  [metosin/compojure-api "0.15.1"]
                  [metosin/ring-http-response "0.4.1"]
                  [metosin/ring-swagger-ui "2.0.17"]
@@ -16,7 +18,7 @@
                  [im.chit/purnam.test "0.4.3"]
                  [om "0.7.1"]
                  [prismatic/om-tools "0.3.2" :exclusions [org.clojure/clojure]]
-                 [sablono "0.2.21"]
+                 [sablono "0.2.22"]
                  [figwheel "0.1.4-SNAPSHOT"]]
 
   :source-paths ["src/clj"]
@@ -33,7 +35,7 @@
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-figwheel "0.1.4-SNAPSHOT"]
-            [com.cemerick/austin "0.1.4"]
+            [com.cemerick/austin "0.1.5"]
             [lein-midje "3.1.3"]]
 
   :figwheel {
