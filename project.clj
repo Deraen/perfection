@@ -7,17 +7,18 @@
                  [org.clojure/core.async "0.1.338.0-5c5012-alpha"]
 
                  ;; backend
-                 [http-kit "2.1.18"]
+                 [http-kit "2.1.19"]
                  [metosin/compojure-api "0.15.1"]
                  [metosin/ring-http-response "0.4.1"]
                  [metosin/ring-swagger-ui "2.0.17"]
                  [metosin/clojure-bootcamp.dataset "0.1.0"]
+                 [com.stuartsierra/component "0.2.1"]
 
                  ;; cljs
-                 [org.clojure/clojurescript "0.0-2311"]
+                 [org.clojure/clojurescript "0.0-2322"]
                  [im.chit/purnam.test "0.4.3"]
                  [om "0.7.1"]
-                 [prismatic/om-tools "0.3.2" :exclusions [org.clojure/clojure]]
+                 [prismatic/om-tools "0.3.4" :exclusions [org.clojure/clojure]]
                  [sablono "0.2.22"]
                  [figwheel "0.1.4-SNAPSHOT"]]
 
