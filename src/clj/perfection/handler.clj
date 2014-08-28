@@ -4,7 +4,8 @@
             [compojure.api.sweet :refer :all]
             [ring.swagger.schema :refer [field describe]]
             [schema.core :as s]
-            [perfection.utils :refer [static-handler]]))
+            [perfection.utils :refer [static-handler]]
+            [metosin.dataset.pizzas :refer [pizzas]]))
 
 (defapi app
   (GET* "/" [] (redirect "index.html"))
@@ -14,9 +15,9 @@
   (swagger-docs
     :title "Api thingies"
     :description "playing with things")
+
   (swaggered "api"
     :description "Math with parameters"
     (context "/api" []
-      (GET* "/echo" []
-        :query-params [a :- String]
-        (ok a)))))
+      (GET* "/pizzas" []
+        (ok pizzas)))))

@@ -18,9 +18,10 @@
                  [org.clojure/clojurescript "0.0-2322"]
                  [im.chit/purnam.test "0.4.3"]
                  [om "0.7.1"]
-                 [prismatic/om-tools "0.3.4" :exclusions [org.clojure/clojure]]
+                 [prismatic/om-tools "0.3.3" :exclusions [org.clojure/clojure]]
                  [sablono "0.2.22"]
-                 [figwheel "0.1.4-SNAPSHOT"]]
+                 [figwheel "0.1.4-SNAPSHOT"]
+                 [cljs-ajax "0.2.6"]]
 
   :source-paths ["src/clj"]
   :test-paths ["test/clj"]
