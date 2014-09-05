@@ -9,7 +9,8 @@
                  ;; backend
                  [http-kit "2.1.19"]
                  [metosin/compojure-api "0.15.1"]
-                 [metosin/ring-http-response "0.4.1"]
+                 [metosin/ring-swagger "0.13.0"]
+                 [metosin/ring-http-response "0.5.0"]
                  [metosin/ring-swagger-ui "2.0.17"]
                  [metosin/clojure-bootcamp.dataset "0.1.0"]
                  [com.stuartsierra/component "0.2.1"]

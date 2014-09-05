@@ -27,7 +27,7 @@
 
 (defcomponent pizza-list [cursor owner]
   (render-state [_ state]
-    (html [:div (om/build-all pizza-item cursor {:init-state state})])))
+    (html [:div (om/build-all pizza-item cursor {:init-state state :key :name})])))
 
 (defn get-cart-total [cart]
   (reduce (fn [acc [_ {:keys [qty price]}]]
@@ -40,11 +40,11 @@
     (html [:div
            [:ul (for [[name {:keys [qty]}] cart]
                   [:li (str name ", " qty " kpl")])]
-           [:span (str "Yhteensä: " (get-cart-total cart) "€")]])))
+           [:span (str "Yhteensä: " (.toFixed (get-cart-total cart) 2) "€")]])))
 
-(defn update-cart [cart {{:keys [name]} :pizza f :f}]
-  (let [pizza (get cart name)
-        qty (:qty pizza)
+(defn update-cart [cart {:keys [pizza f]}]
+  (let [name (:name pizza)
+        qty (get-in cart [name :qty])
         new-qty (f qty)]
     (if (> new-qty 0)
       (assoc cart name (assoc pizza :qty new-qty))
