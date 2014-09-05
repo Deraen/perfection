@@ -29,18 +29,22 @@
   (render-state [_ state]
     (html [:div (om/build-all pizza-item cursor {:init-state state})])))
 
-(defcomponent shopping-cart [cursor owner]
+(defn get-cart-total [cart]
+  (reduce (fn [acc [_ {:keys [qty price]}]]
+            (+ acc (* qty price)))
+          0
+          cart))
+
+(defcomponent shopping-cart [cart owner]
   (render-state [_ _]
     (html [:div
-           [:ul (for [[name {:keys [qty price]}] (:cart cursor)]
-                  [:li (str name " * " qty)])]
-           [:span (str "Yhteensä: " (reduce (fn [acc [_ {:keys [qty price]}]]
-                                              (+ acc (* qty price)))
-                                            0
-                                            (:cart cursor)))]])))
+           [:ul (for [[name {:keys [qty]}] cart]
+                  [:li (str name ", " qty " kpl")])]
+           [:span (str "Yhteensä: " (get-cart-total cart) "€")]])))
 
 (defn update-cart [cart {{:keys [name]} :pizza f :f}]
-  (let [{:keys [qty] :as pizza} (get cart name)
+  (let [pizza (get cart name)
+        qty (:qty pizza)
         new-qty (f qty)]
     (if (> new-qty 0)
       (assoc cart name (assoc pizza :qty new-qty))
@@ -49,6 +53,7 @@
 (defcomponent pizza-shop [app owner]
   (init-state [_]
     {:<cart (chan)})
+
   (will-mount [_]
     (GET "/api/pizzas"
       {:handler #(om/update! app [:pizzas] (clojure.walk/keywordize-keys (js->clj %)))})
@@ -57,10 +62,11 @@
             (let [e (<! <cart)]
               (om/transact! app :cart #(update-cart % e))
               (recur))))))
+
   (render-state [_ state]
     (html [:div
            [:h1 "Pizza shop"]
            (om/build pizza-list (:pizzas app) {:init-state state})
-           (om/build shopping-cart {:cart (:cart app)})])))
+           (om/build shopping-cart (:cart app))])))
 
 (om/root pizza-shop app-state {:target js/document.body})
